@@ -31,15 +31,15 @@ const FooterSection = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               {BrandLogo}
-              <div className="text-2xl font-bold text-foreground tracking-tight">
+              {/* <div className="text-2xl font-bold text-foreground tracking-tight">
                 {BrandText}
-              </div>
+              </div> */}
             </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-brand-grey text-sm leading-relaxed">
               Marketing people actually want. Put your content straight into
               calendars with reminders, media, and automation.
             </p>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-brand-grey text-sm">
               We're not trying to fix email. We're skipping it entirely. At
               Calendure, we believe your calendar isn't just for meetings — it's
               where attention lives.
@@ -52,25 +52,25 @@ const FooterSection = () => {
         </div>
 
         <div className="border-t mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-muted-foreground text-sm">
+          <p className="text-brand-grey text-sm">
             © 2025 Calendure. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
             <Link
               to="/privacy-policy"
-              className="text-muted-foreground hover:text-brand-orange transition-colors"
+              className="text-brand-grey hover:text-brand-orange transition-colors"
             >
               Privacy Policy
             </Link>
             <a
               href="#"
-              className="text-muted-foreground hover:text-brand-orange transition-colors"
+              className="text-brand-grey hover:text-brand-orange transition-colors"
             >
               Terms of Service
             </a>
             <a
               href="#"
-              className="text-muted-foreground hover:text-brand-orange transition-colors"
+              className="text-brand-grey hover:text-brand-orange transition-colors"
             >
               Cookie Policy
             </a>

@@ -17,7 +17,6 @@ const Header = ({ variant = "full" }: HeaderProps) => {
       <div className="container flex h-20 items-center justify-between px-4 md:px-6">
         <Link to="/" className="flex items-center justify-center gap-2">
           {BrandLogo}
-          {BrandText}
         </Link>
         
         {/* Desktop Navigation */}

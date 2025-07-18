@@ -71,7 +71,7 @@ const DashboardLayout = ({ children, headerTitle, headerSubtitle, headerAction }
         <header className="bg-white/80 backdrop-blur-sm border-b px-8 py-6 sticky top-0 z-10 flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold text-brand-orange">{headerTitle}</h1>
-            <p className="text-muted-foreground mt-1">{headerSubtitle}</p>
+            <p className="text-brand-grey mt-1">{headerSubtitle}</p>
           </div>
           <div className="flex flex-row space-x-4">
             {headerAction}

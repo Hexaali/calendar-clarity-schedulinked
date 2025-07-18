@@ -10,7 +10,7 @@ const pricingPlans = [
       "Basic analytics",
     ],
     actionText: "Get Started Free",
-    variant: "outline",
+    variant: "outline" as const,
   },
   {
     title: "Professional",
@@ -23,7 +23,7 @@ const pricingPlans = [
     ],
     popular: true,
     actionText: "Start Professional",
-    variant: "solid",
+    variant: "solid" as const,
   },
   {
     title: "Enterprise",
@@ -35,7 +35,7 @@ const pricingPlans = [
       "Custom integrations",
     ],
     actionText: "Contact Sales",
-    variant: "outline",
+    variant: "outline" as const,
   },
 ];
 
@@ -46,7 +46,7 @@ const PricingSection = () => (
         <h2 className="text-4xl md:text-5xl font-bold mb-6 text-brand-green tracking-tight font-radion">
           Simple, Scalable Pricing
         </h2>
-        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+        <p className="text-xl text-brand-grey max-w-3xl mx-auto">
           Choose the plan that fits your audience size and needs.
         </p>
       </div>

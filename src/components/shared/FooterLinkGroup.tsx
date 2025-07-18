@@ -11,7 +11,7 @@ export const FooterLinkGroup = ({ title, links }: FooterLinkGroupProps) => (
         <li key={label}>
           <a
             href={href}
-            className="text-muted-foreground hover:text-brand-orange transition-colors"
+            className="text-brand-grey hover:text-brand-orange transition-colors"
           >
             {label}
           </a>

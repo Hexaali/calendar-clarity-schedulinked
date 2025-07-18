@@ -603,7 +603,7 @@ export default function Auth() {
                   ? "Welcome to Calendure"
                   : "Welcome to Calendure"}
               </h2>
-              <p className="text-gray-600 text-xs">
+              <p className="text-brand-grey text-xs">
                 The smarter way to schedule.
               </p>
             </div>
@@ -746,7 +746,7 @@ export default function Auth() {
               </Button>
             </form>
 
-            <div className="mt-4 text-center text-sm text-muted-foreground">
+            <div className="mt-4 text-center text-sm text-brand-grey">
               {mode === "login" ? (
                 <>
                   Don't have an account?{" "}

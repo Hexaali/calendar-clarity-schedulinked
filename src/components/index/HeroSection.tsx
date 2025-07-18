@@ -8,7 +8,7 @@ const HeroSection = () => (
       <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-brand-green mb-8 leading-tight tracking-tight">
         Marketing people actually want.
       </h1>
-      <p className="text-xl md:text-2xl text-gray-500 mb-12 max-w-4xl mx-auto leading-relaxed">
+      <p className="text-xl md:text-2xl text-brand-grey mb-12 max-w-4xl mx-auto leading-relaxed">
         Calendure puts your content straight into calendars — with reminders, media, and automation — no inbox, no noise, just visibility that works.
       </p>
       <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">

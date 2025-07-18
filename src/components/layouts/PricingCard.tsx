@@ -41,7 +41,7 @@ export const PricingCard = ({
           <div className="text-4xl font-bold mb-8">{price}</div>
         </div>
 
-        <ul className="space-y-4 text-muted-foreground mb-8">
+        <ul className="space-y-4 text-brand-grey mb-8">
           {features.map((item, i) => (
             <li key={i} className="flex items-center gap-3">
               <CheckCircle className="h-5 w-5 text-green-500" />

@@ -26,7 +26,7 @@ export default {
         brand: {
           orange: "#f26b3b",
           green: "#024F39",
-          yellow: '#FFD500',
+          grey: '#333333',
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
