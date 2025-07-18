@@ -37,7 +37,7 @@ const DashboardLayout = ({ children, headerTitle, headerSubtitle, headerAction }
           <div className="flex items-center gap-3">
             <Avatar className="h-10 w-10">
               <AvatarImage src="" alt={fullName} />
-              <AvatarFallback className="bg-[#C9FF57] text-black font-semibold">{initials}</AvatarFallback>
+              <AvatarFallback className="bg-brand-green text-white font-semibold">{initials}</AvatarFallback>
             </Avatar>
             {sidebarOpen && (
               <div className="flex-1">
@@ -70,7 +70,7 @@ const DashboardLayout = ({ children, headerTitle, headerSubtitle, headerAction }
       <main className="flex-1 overflow-y-auto">
         <header className="bg-white/80 backdrop-blur-sm border-b px-8 py-6 sticky top-0 z-10 flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold">{headerTitle}</h1>
+            <h1 className="text-3xl font-bold text-brand-orange">{headerTitle}</h1>
             <p className="text-muted-foreground mt-1">{headerSubtitle}</p>
           </div>
           <div className="flex flex-row space-x-4">

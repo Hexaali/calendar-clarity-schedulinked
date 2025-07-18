@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { SchedulinkedLogo, SchedulinkedText } from "@/components/shared/Constants"
+import { BrandLogo,BrandText} from "@/components/shared/Constants"
 
 interface HeaderProps {
   variant?: "full" | "simple";
@@ -16,8 +16,8 @@ const Header = ({ variant = "full" }: HeaderProps) => {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm">
       <div className="container flex h-20 items-center justify-between px-4 md:px-6">
         <Link to="/" className="flex items-center justify-center gap-2">
-          {SchedulinkedLogo}
-          {SchedulinkedText}
+          {BrandLogo}
+          {BrandText}
         </Link>
         
         {/* Desktop Navigation */}
@@ -28,13 +28,13 @@ const Header = ({ variant = "full" }: HeaderProps) => {
           <a href="/#pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
             Pricing
           </a>
-          <Button asChild className="bg-[#C9FF57] hover:bg-[#b6ea4d] text-foreground font-semibold shadow-sm" variant="outline">
+          <Button asChild className="bg-brand-orange hover:bg-brand-green hover:text-white text-white rounded-lg font-semibold " >
             <Link to="/auth">Get Started</Link>
           </Button>
         </nav>
         
         {/* Mobile Menu Button */}
-        <button className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+        <button className="md:hidden " onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
           {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>

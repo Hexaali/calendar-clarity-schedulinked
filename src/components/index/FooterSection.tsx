@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { BrandLogo, BrandText } from "../shared/Constants";
 
 const FooterSection = () => (
   <footer className="bg-background border-t">
@@ -7,13 +8,9 @@ const FooterSection = () => (
         {/* Brand Section */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <img
-              src="/lovable-uploads/2dac7733-cabb-4791-bcb3-b2a0608ce1c2.png"
-              alt="Schedulinked Logo"
-              className="h-8 w-"
-            />
+            {BrandLogo}
             <div className="text-2xl font-bold text-foreground tracking-tight">
-              Schedulinked
+              {BrandText}
             </div>
           </div>
           <p className="text-muted-foreground text-sm leading-relaxed">
@@ -23,7 +20,7 @@ const FooterSection = () => (
           <div className="space-y-2">
             <p className="text-muted-foreground text-sm">
               We're not trying to fix email. We're skipping it entirely. At
-              Schedulinked, we believe your calendar isn't just for meetings —
+              Calendure, we believe your calendar isn't just for meetings —
               it's where attention lives.
             </p>
           </div>
@@ -146,7 +143,7 @@ const FooterSection = () => (
       {/* Bottom Section */}
       <div className="border-t mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="text-muted-foreground text-sm">
-          © 2025 Schedulinked. All rights reserved.
+          © 2025 Calendure. All rights reserved.
         </p>
         <div className="flex gap-6 text-sm">
           <Link

@@ -79,7 +79,7 @@ interface EventData {
   startTime: string;
   endTime: string;
   location: string;
-  timezone: string; 
+  timezone: string;
 }
 
 interface FollowerOption {
@@ -100,11 +100,13 @@ const CreateEvent = () => {
     startTime: "",
     endTime: "",
     location: "",
-    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone, 
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
   });
 
   const [followers, setFollowers] = useState<FollowerOption[]>([]);
-  const [selectedFollowers, setSelectedFollowers] = useState<FollowerOption[]>([]);
+  const [selectedFollowers, setSelectedFollowers] = useState<FollowerOption[]>(
+    []
+  );
   const [showEndDateTooltip, setShowEndDateTooltip] = useState(false);
   const [showEndTimeTooltip, setShowEndTimeTooltip] = useState(false);
 
@@ -113,7 +115,13 @@ const CreateEvent = () => {
   const username = userData?.username || "unknown@example.com";
 
   const getInitials = (name: string): string =>
-    name ? name.split(" ").map((n) => n[0]).join("").toUpperCase() : "U";
+    name
+      ? name
+          .split(" ")
+          .map((n) => n[0])
+          .join("")
+          .toUpperCase()
+      : "U";
 
   const initials = getInitials(fullName);
 
@@ -188,9 +196,9 @@ const CreateEvent = () => {
       return;
     }
 
-    const startDateTime = new Date(
-      `${eventData.startDate}T${eventData.startTime || "00:00"}:00`
-    );
+   const startDateTime = new Date(
+  `${eventData.startDate}T${eventData.startTime || "12:00"}:00`
+);
     const now = new Date();
 
     if (startDateTime < now) {
@@ -221,7 +229,7 @@ const CreateEvent = () => {
       category: "EVENT",
       duration: "",
       business: businessId,
-      timezone: eventData.timezone, 
+      timezone: eventData.timezone,
       followers: selectedFollowers.map((f) => f.value),
     };
 
@@ -262,7 +270,7 @@ const CreateEvent = () => {
           <div className="flex items-center gap-3">
             <Avatar className="h-10 w-10">
               <AvatarImage src="" alt={fullName} />
-              <AvatarFallback className="bg-[#C9FF57] text-black font-semibold">
+              <AvatarFallback className="bg-brand-green text-white font-semibold">
                 {initials}
               </AvatarFallback>
             </Avatar>
@@ -330,7 +338,7 @@ const CreateEvent = () => {
             <Button
               onClick={handleCreateEvent}
               disabled={loading}
-              className="bg-[#C9FF57] text-black font-semibold shadow-md hover:bg-[#b6ea4d]"
+              className="bg-brand-orange text-white font-semibold shadow-md hover:bg-orange-600"
             >
               <Send className="h-4 w-4 mr-2" />
               {loading ? "Creating..." : "Create"}
@@ -385,7 +393,7 @@ const CreateEvent = () => {
                   )}
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <Label>Start Date *</Label>
+                      <Label>Event Date *</Label>
                       <Input
                         type="date"
                         min={getTodayDate()}
@@ -394,77 +402,62 @@ const CreateEvent = () => {
                       />
                     </div>
                     <div>
-                      <Label className="flex items-center gap-2">
-                        End Date
-                        <TooltipProvider>
-                          <Tooltip open={showEndDateTooltip} onOpenChange={setShowEndDateTooltip}>
-                            <TooltipTrigger asChild>
-                              <button
-                                type="button"
-                                onClick={() => setShowEndDateTooltip((prev) => !prev)}
-                                className="text-red-600 hover:text-red-700"
-                              >
-                                <Info className="h-4 w-4" />
-                              </button>
-                            </TooltipTrigger>
-                            <TooltipContent side="top" align="start" className="max-w-xs text-sm">
-                              End date is optional. If not provided, event will be single day.
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
-                      </Label>
-                      <Input
-                        type="date"
-                        min={eventData.startDate || getTodayDate()}
-                        value={eventData.endDate}
-                        onChange={handleEndDateChange}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
                       <Label>Start Time</Label>
                       <Input
                         type="time"
                         value={eventData.startTime}
-                        onChange={(e) => handleInputChange("startTime", e.target.value)}
-                      />
-                    </div>
-                    <div>
-                      <Label className="flex items-center gap-2">
-                        End Time
-                        <TooltipProvider>
-                          <Tooltip open={showEndTimeTooltip} onOpenChange={setShowEndTimeTooltip}>
-                            <TooltipTrigger asChild>
-                              <button
-                                type="button"
-                                onClick={() => setShowEndTimeTooltip((prev) => !prev)}
-                                className="text-red-600 hover:text-red-700"
-                              >
-                                <Info className="h-4 w-4" />
-                              </button>
-                            </TooltipTrigger>
-                            <TooltipContent side="top" align="start" className="max-w-xs text-sm text-black">
-                              End time is optional. If not provided, event will be all-day.
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
-                      </Label>
-                      <Input
-                        type="time"
-                        value={eventData.endTime}
-                        onChange={handleEndTimeChange}
+                        onChange={(e) =>
+                          handleInputChange("startTime", e.target.value)
+                        }
                       />
                     </div>
                   </div>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <div className="grid grid-cols-2 gap-4">
+                          <div>
+                            <Label className="flex items-center gap-2">
+                              End Date
+                            </Label>
+                            <Input
+                              type="date"
+                              min={eventData.startDate || getTodayDate()}
+                              value={eventData.endDate}
+                              onChange={handleEndDateChange}
+                            />
+                          </div>
+                          <div>
+                            <Label className="flex items-center gap-2">
+                              End Time
+                            </Label>
+                            <Input
+                              type="time"
+                              value={eventData.endTime}
+                              onChange={handleEndTimeChange}
+                            />
+                          </div>
+                        </div>
+                      </TooltipTrigger>
+                      <TooltipContent
+                        side="top"
+                        align="center"
+                        className="max-w-sm text-sm text-black"
+                      >
+                        End date and time are optional. If not provided, the
+                        event will be treated as an all-day single-day event.
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
 
                   {/* Location */}
                   <div>
                     <Label>Location</Label>
                     <Input
                       value={eventData.location}
-                      onChange={(e) => handleInputChange("location", e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("location", e.target.value)
+                      }
                     />
                   </div>
                 </CardContent>

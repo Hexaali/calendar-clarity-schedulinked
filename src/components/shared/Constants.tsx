@@ -6,17 +6,17 @@ export const GOOGLE_REDIRECT_URI = 'https://schedulinked.kayman.biz'
 export const GOOGLE_SCOPES = 'https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/userinfo.email'
 
 
-export const SchedulinkedText = (
-  <div className="text-2xl font-bold text-foreground tracking-tight">
-    Schedulinked
+export const BrandText = (
+  <div className="text-2xl font-bold text-brand-green tracking-tight">
+    Calendure
   </div>
 );
 
 
-export const SchedulinkedLogo = (
+export const BrandLogo = (
   <img
-    src="/lovable-uploads/2dac7733-cabb-4791-bcb3-b2a0608ce1c2.png"
+    src="/logo.svg"
     alt="Schedulinked Logo"
-    className="h-12 w-12 mb-2 mt-2"
+    className="h-14 w-14 mb-2 mt-2"
   />
 );

@@ -193,13 +193,13 @@
 //             <div className="flex flex-col items-center mb-4 gap-y-2">
 //               <img
 //                 src="/lovable-uploads/2dac7733-cabb-4791-bcb3-b2a0608ce1c2.png"
-//                 alt="Schedulinked Logo"
+//                 alt="Calendure Logo"
 //                 className="h-12 w-12 mb-2"
 //               />
 //               <h2 className="text-2xl font-bold text-center">
 //                 {mode === "login"
-//                   ? "Welcome to Schedulinked"
-//                   : "Welcome to Schedulinked"}
+//                   ? "Welcome to Calendure"
+//                   : "Welcome to Calendure"}
 //               </h2>
 //               <p className="text-gray-600 text-xs">
 //                 The smarter way to schedule.
@@ -410,7 +410,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/shared/Header";
 import { API_BASE_URL } from "@/components/shared/Constants";
 import { Toaster, toast } from "react-hot-toast";
-import { SchedulinkedLogo } from "@/components/shared/Constants";
+import { BrandLogo} from "@/components/shared/Constants";
 
 export default function Auth() {
   const [mode, setMode] = useState("login");
@@ -597,11 +597,11 @@ export default function Auth() {
         <Card className="w-full max-w-md rounded-2xl shadow-lg border-0 bg-white animate-fade-in">
           <CardContent className="py-8 px-8">
             <div className="flex flex-col items-center mb-4 gap-y-2">
-                {SchedulinkedLogo}
-              <h2 className="text-2xl font-bold text-center">
+                {BrandLogo}
+              <h2 className="text-2xl font-bold text-brand-green text-center">
                 {mode === "login"
-                  ? "Welcome to Schedulinked"
-                  : "Welcome to Schedulinked"}
+                  ? "Welcome to Calendure"
+                  : "Welcome to Calendure"}
               </h2>
               <p className="text-gray-600 text-xs">
                 The smarter way to schedule.
@@ -734,7 +734,7 @@ export default function Auth() {
                 type="submit"
                 size="lg"
                 disabled={loading}
-                className="w-full bg-[#C9FF57] text-black font-semibold py-3 rounded-lg hover:bg-[#b6ea4d] transition-all"
+                className="w-full bg-brand-orange text-white font-semibold py-3 rounded-lg hover:bg-orange-600 transition-all"
               >
                 {loading
                   ? mode === "login"
@@ -751,7 +751,7 @@ export default function Auth() {
                 <>
                   Don't have an account?{" "}
                   <button
-                    className="text-[#99b728] underline font-semibold"
+                    className="text-brand-green underline font-semibold"
                     onClick={() => setMode("register")}
                   >
                     Register
@@ -761,7 +761,7 @@ export default function Auth() {
                 <>
                   Already have an account?{" "}
                   <button
-                    className="text-[#99b728] underline font-semibold"
+                    className="text-brand-green underline font-semibold"
                     onClick={() => setMode("login")}
                   >
                     Login

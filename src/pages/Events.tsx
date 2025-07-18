@@ -107,7 +107,7 @@ const Events = () => {
       headerSubtitle="Manage your calendar marketing campaigns and events."
       headerAction={
         <Link to="/dashboard/create-event">
-          <Button className="bg-[#C9FF57] text-black hover:bg-[#b6ea4d] font-semibold shadow-md">
+          <Button className="bg-brand-orange text-white hover:bg-orange-600 font-semibold shadow-md">
             <Plus className="h-4 w-4 mr-2" />
             Create Event
           </Button>
@@ -125,10 +125,10 @@ const Events = () => {
           <Card key={i} className="shadow-lg">
             <CardContent className="flex items-center justify-between p-6">
               <div>
-                <p className="text-sm text-muted-foreground">{stat.label}</p>
-                <p className="text-2xl font-bold">{stat.value}</p>
+                <p className="text-sm text-brand-orange">{stat.label}</p>
+                <p className="text-2xl text-black font-bold">{stat.value}</p>
               </div>
-              <Calendar className="h-8 w-8 text-[#C9FF57]" />
+              <Calendar className="h-8 w-8 text-brand-green" />
             </CardContent>
           </Card>
         ))}
