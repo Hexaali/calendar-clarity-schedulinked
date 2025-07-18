@@ -14,7 +14,7 @@ const FooterSection = () => {
       { label: "About", href: "#" },
       { label: "Blog", href: "#" },
       { label: "Careers", href: "#" },
-      { label: "Contact", href: "#" },
+      { label: "Contact", href: "/contact" },
     ],
     support: [
       { label: "Help Center", href: "#" },

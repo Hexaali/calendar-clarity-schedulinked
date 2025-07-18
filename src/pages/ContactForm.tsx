@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "react-hot-toast";
 import Header from "@/components/shared/Header";
 import FooterSection from "@/components/index/FooterSection";
-import { API_BASE_URL } from "@/components/shared/Constants";
+import { API_BASE_URL, SITE_KEY } from "@/components/shared/Constants";
 
 declare global {
   interface Window {
@@ -122,7 +122,7 @@ const ContactForm: React.FC = () => {
 
         if (captchaRef.current && window.turnstile) {
           window.turnstile.render(captchaRef.current, {
-            sitekey: "0x4AAAAAABlXI8chOAIicWnQ",
+            sitekey: SITE_KEY,
             callback: (token: string) => {
               setFormData((prev) => ({ ...prev, captchaToken: token }));
             },
@@ -192,7 +192,7 @@ const ContactForm: React.FC = () => {
             <div className="mb-4" ref={captchaRef}></div>
 
             <Button
-              className="bg-[#B6EA4D] text-black hover:bg-[#99ca37]"
+              className="bg-brand-orange text-white hover:bg-brand-green"
               type="submit"
               disabled={loading}
             >
