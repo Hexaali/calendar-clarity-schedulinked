@@ -2,107 +2,111 @@ import Header from "@/components/shared/Header";
 import FooterSection from "@/components/index/FooterSection";
 
 const PrivacyPolicy = () => {
-  return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <Header variant="full" />
-
-      <main className="flex-1 p-6 max-w-4xl mx-auto font-[system-ui] text-[14px]">
-        <div className="text-center my-10">
-          <h1 className="text-[60px] font-normal mb-4">Privacy Policy</h1>
-        </div>
-
-        <div className="mb-8">
-          <p>
-            <em>
-              <a
-                href=""
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-black font-semibold transition-colors hover:underline"
-              >
-                Effective July 15, 2025
-              </a>
-            </em>
-          </p>
-        </div>
-
-        <h2 className="mb-4 text-3xl">Your Privacy Matters.</h2>
-        <p className="mb-6">
-          We value your privacy. This Privacy Policy explains how we collect,
-          use, store, and protect your information when you use our app. By
-          using our services, you agree to this policy.
-        </p>
-
-        <h3 className="text-xl mt-6 mb-2">1. Information We Collect</h3>
-        <ul className="list-disc list-inside mb-4">
+  const sections = [
+    {
+      title: "1. Information We Collect",
+      content: (
+        <ul className="list-disc list-inside space-y-1">
           <li>Email address/Full Name</li>
           <li>Time zone</li>
           <li>Access to your calendar</li>
         </ul>
-
-        <h3 className="text-xl mt-6 mb-2">2. How We Use Your Information</h3>
-        <ul className="list-disc list-inside mb-4">
+      ),
+    },
+    {
+      title: "2. How We Use Your Information",
+      content: (
+        <ul className="list-disc list-inside space-y-1">
           <li>To deliver calendar event updates</li>
           <li>To manage your account and preferences</li>
           <li>To improve app functionality and user experience</li>
           <li>To comply with legal obligations</li>
         </ul>
+      ),
+    },
+    {
+      title: "3. Cookies and Tracking Technologies",
+      content:
+        "We may use cookies or similar technologies to analyze usage trends, administer the app, and gather demographic information. Users can manage cookie preferences through their browser settings.",
+    },
+    {
+      title: "4. Sharing of Information",
+      content:
+        "We do not sell your personal information. We may share your data with trusted third-party service providers for hosting, analytics, and support, subject to strict confidentiality obligations.",
+    },
+    {
+      title: "5. User Rights and Choices",
+      content:
+        "You have the right to access, correct, delete, or limit the use of your personal data. You can withdraw calendar access at any time. Residents of the EU, UK, or California may have additional rights under GDPR or CCPA.",
+    },
+    {
+      title: "6. Data Retention and Security",
+      content:
+        "We retain your data only as long as necessary for the purposes described. We implement security measures to protect your information against unauthorized access, alteration, or destruction.",
+    },
+    {
+      title: "7. Children’s Privacy",
+      content:
+        "The app is not intended for children under the age of 13 (or under 16 in the EU/UK). We do not knowingly collect data from minors. If we learn we have collected personal information from a child without parental consent, we will delete it.",
+    },
+    {
+      title: "8. Changes to this Policy",
+      content:
+        "We may update this Privacy Policy from time to time. We encourage you to review it periodically. Continued use of the app after changes means you accept the revised policy.",
+    },
+  ];
 
-        <h3 className="text-xl mt-6 mb-2">
-          3. Cookies and Tracking Technologies
-        </h3>
-        <p className="mb-4">
-          We may use cookies or similar technologies to analyze usage trends,
-          administer the app, and gather demographic information. Users can
-          manage cookie preferences through their browser settings.
-        </p>
+  return (
+    <div className="min-h-screen flex flex-col bg-background">
+      <Header variant="full" />
 
-        <h3 className="text-xl mt-6 mb-2">4. Sharing of Information</h3>
-        <p className="mb-4">
-          We do not sell your personal information. We may share your data with
-          trusted third-party service providers for hosting, analytics, and
-          support, subject to strict confidentiality obligations.
-        </p>
+      <main className="flex-1 px-4 sm:px-6 md:px-8 py-10 max-w-4xl mx-auto font-sans text-sm sm:text-base leading-relaxed">
+        <header className="text-center mb-10">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-4">
+            Privacy Policy
+          </h1>
+          <p>
+            <em>
+              <a
+                href="#"
+                className="text-black font-medium hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Effective July 15, 2025
+              </a>
+            </em>
+          </p>
+        </header>
 
-        <h3 className="text-xl mt-6 mb-2">5. User Rights and Choices</h3>
-        <p className="mb-4">
-          You have the right to access, correct, delete, or limit the use of
-          your personal data. You can withdraw calendar access at any time.
-          Residents of the EU, UK, or California may have additional rights
-          under GDPR or CCPA.
-        </p>
+        <section className="space-y-6">
+          <div>
+            <h2 className="text-xl font-semibold mb-2 text-brand-green">Your Privacy Matters</h2>
+            <p>
+              We value your privacy. This Privacy Policy explains how we collect,
+              use, store, and protect your information when you use our app. By
+              using our services, you agree to this policy.
+            </p>
+          </div>
 
-        <h3 className="text-xl mt-6 mb-2">6. Data Retention and Security</h3>
-        <p className="mb-4">
-          We retain your data only as long as necessary for the purposes
-          described. We implement security measures to protect your information
-          against unauthorized access, alteration, or destruction.
-        </p>
+          {sections.map(({ title, content }) => (
+            <div key={title}>
+              <h3 className="text-lg font-semibold text-brand-orange mb-2">{title}</h3>
+              {typeof content === "string" ? <p>{content}</p> : content}
+            </div>
+          ))}
 
-        <h3 className="text-xl mt-6 mb-2">7. Children’s Privacy</h3>
-        <p className="mb-4">
-          The app is not intended for children under the age of 13 (or under 16
-          in the EU/UK). We do not knowingly collect data from minors. If we
-          learn we have collected personal information from a child without
-          parental consent, we will delete it.
-        </p>
-
-        <h3 className="text-xl mt-6 mb-2">8. Changes to this Policy</h3>
-        <p className="mb-4">
-          We may update this Privacy Policy from time to time. We encourage you
-          to review it periodically. Continued use of the app after changes
-          means you accept the revised policy.
-        </p>
-
-        <p className="mb-12">
-          For privacy-related questions or requests, contact us at{" "}
-          <img
-            src="/email.png"
-            alt="Email address"
-            className="inline-block h-10 w-22 mb-2"
-          />
-        </p>
+          <p className="mt-8">
+            For privacy-related questions or requests, contact us at
+            <img
+              src="/email.png"
+              alt="Email address"
+              className="inline-block h-6 sm:h-8 md:h-10 ml-2 mb-2"
+            />
+          </p>
+        </section>
       </main>
+
       <FooterSection />
     </div>
   );

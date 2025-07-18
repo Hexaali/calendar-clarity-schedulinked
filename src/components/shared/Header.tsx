@@ -22,10 +22,10 @@ const Header = ({ variant = "full" }: HeaderProps) => {
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <a href="/#how" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+          <a href="/#how" className="text-sm font-medium text-muted-foreground hover:text-brand-orange transition-colors duration-200">
             How It Works
           </a>
-          <a href="/#pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+          <a href="/#pricing" className="text-sm font-medium text-muted-foreground hover:text-brand-orange transition-colors duration-200">
             Pricing
           </a>
           <Button asChild className="bg-brand-orange hover:bg-brand-green hover:text-white text-white rounded-lg font-semibold " >
