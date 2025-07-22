@@ -13,6 +13,7 @@ import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
 import Consent from "./pages/Consent";
 import PrivacyPolicy from "./pages/PrivayPolicy";
+import TermsOfServices from "./pages/TermOfServices";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/auth" element={<Auth />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} /> 
           <Route path="/contact-us" element={<ContactForm />} />
+          <Route path="/terms-of-services" element={<TermsOfServices />} />
           <Route
             path="/dashboard"
             element={

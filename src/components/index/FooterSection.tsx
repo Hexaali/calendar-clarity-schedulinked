@@ -62,12 +62,12 @@ const FooterSection = () => {
             >
               Privacy Policy
             </Link>
-            <a
-              href="#"
+            <Link
+              to="terms-of-services"
               className="text-brand-grey hover:text-brand-orange transition-colors"
             >
               Terms of Service
-            </a>
+            </Link>
             <a
               href="#"
               className="text-brand-grey hover:text-brand-orange transition-colors"
