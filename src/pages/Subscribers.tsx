@@ -71,7 +71,6 @@ const Subscribers = () => {
         </Card>
       </div>
 
-      {/* Subscribers Table */}
       <Card className="border-0 shadow-lg bg-white/50 backdrop-blur-sm">
         <CardHeader className="border-b border-gray-100">
           <CardTitle className="text-xl font-semibold font-radion text-black">

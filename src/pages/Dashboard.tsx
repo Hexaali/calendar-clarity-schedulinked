@@ -128,7 +128,6 @@ const Dashboard = () => {
         </Link>
       }
     >
-      {/* Metrics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {metrics.map((metric) => {
           const IconComponent = metric.icon;
@@ -151,7 +150,6 @@ const Dashboard = () => {
         })}
       </div>
 
-      {/* Recent Events Table */}
       <Card className="border-0 shadow-lg bg-white/50 backdrop-blur-sm">
         <CardHeader className="border-b border-gray-100">
           <CardTitle className="text-xl font-semibold">Recent Events</CardTitle>

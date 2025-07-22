@@ -19,7 +19,6 @@ const Header = ({ variant = "full" }: HeaderProps) => {
           {BrandLogo}
         </Link>
         
-        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           <a href="/#how" className="text-sm font-medium text-brand-green hover:text-brand-orange transition-colors duration-200">
             How It Works
@@ -32,13 +31,11 @@ const Header = ({ variant = "full" }: HeaderProps) => {
           </Button>
         </nav>
         
-        {/* Mobile Menu Button */}
         <button className="md:hidden " onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
           {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
-      
-      {/* Mobile Navigation */}
+    
       {mobileMenuOpen && (
         <div className="md:hidden border-t bg-background/95 backdrop-blur">
           <nav className="container flex flex-col space-y-4 px-4 py-6">
@@ -48,7 +45,6 @@ const Header = ({ variant = "full" }: HeaderProps) => {
             <a href="/#pricing" className="text-sm font-medium text-brand-grey transition-colors">
               Pricing
             </a>
-
             <Button asChild className="bg-white text-foreground hover:bg-muted font-semibold shadow-sm w-fit mb-1" variant="outline">
               <Link to="/auth">Get Started</Link>
             </Button>

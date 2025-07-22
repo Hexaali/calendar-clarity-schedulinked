@@ -82,8 +82,7 @@ const DashboardLayout = ({ children, headerTitle, headerSubtitle, headerAction }
           })}
         </nav>
       </aside>
-
-      {/* Main Content */}
+      
       <main className="flex-1 overflow-y-auto">
         <header className="bg-white/80 backdrop-blur-sm border-b px-8 py-6 sticky top-0 z-10 flex items-center justify-between">
           <div>

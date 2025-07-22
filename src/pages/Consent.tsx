@@ -291,7 +291,6 @@ const Consent = () => {
         </Card>
       </div>
 
-      {/* Google Modal */}
       <Dialog.Root open={openGoogleModal} onOpenChange={setOpenGoogleModal}>
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-black/50" />
@@ -332,7 +331,6 @@ const Consent = () => {
         </Dialog.Portal>
       </Dialog.Root>
 
-      {/* Apple Modal */}
       <Dialog.Root open={openAppleModal} onOpenChange={setOpenAppleModal}>
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-black/50" />

@@ -450,7 +450,6 @@ const CreateEvent = () => {
                     </Tooltip>
                   </TooltipProvider>
 
-                  {/* Location */}
                   <div>
                     <Label>Location</Label>
                     <Input

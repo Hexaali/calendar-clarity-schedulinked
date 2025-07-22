@@ -100,7 +100,6 @@ const ImagePlaceholder = () => (
   <div className="h-80 bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl shadow-lg" />
 );
 
-// 👇 Now we define the steps and main section after StepBlock is defined
 const steps = [
   {
     id: 1,

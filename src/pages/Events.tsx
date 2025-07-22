@@ -1,12 +1,10 @@
-// src/pages/Events.tsx
+
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Plus, Calendar } from "lucide-react";
 import { toast } from "react-hot-toast";
-
 import { API_BASE_URL } from "@/components/shared/Constants";
 import { getNavigationItems } from "@/components/shared/Navigation";
-
 import DashboardLayout from "@/components/layouts/DashboardLayout";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -120,7 +118,7 @@ const Events = () => {
         </Link>
       }
     >
-      {/* Stats */}
+   
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
         {[
           { label: "Total Events", value: totalEvents },
@@ -140,7 +138,7 @@ const Events = () => {
         ))}
       </div>
 
-      {/* Events Table */}
+     
       <Card className="shadow-lg bg-white/50 backdrop-blur-sm">
         <CardHeader className="border-b border-gray-100">
           <CardTitle className="text-2xl font-semibold">All Events</CardTitle>
