@@ -5,8 +5,8 @@ import { FooterLinkGroup } from "../shared/FooterLinkGroup";
 const FooterSection = () => {
   const footerLinks = {
     product: [
-      { label: "How It Works", href: "#how" },
-      { label: "Pricing", href: "#pricing" },
+      { label: "How It Works", href: "/#how" },
+      { label: "Pricing", href: "/#pricing" },
       { label: "API Documentation", href: "#" },
       { label: "Integrations", href: "#" },
     ],

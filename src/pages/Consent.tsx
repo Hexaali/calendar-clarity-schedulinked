@@ -323,7 +323,7 @@ const Consent = () => {
               <Dialog.Close asChild>
                 <Button variant="outline">Cancel</Button>
               </Dialog.Close>
-              <Button onClick={handleGoogleCalendarSubmit} className="bg-[#C9FF57] hover:bg-[#b6ea4d] text-black">
+              <Button onClick={handleGoogleCalendarSubmit} className="bg-brand-orange hover:bg-brand-orange text-white">
                 Connect
               </Button>
             </div>
@@ -393,7 +393,7 @@ const Consent = () => {
               <Dialog.Close asChild>
                 <Button variant="outline">Cancel</Button>
               </Dialog.Close>
-              <Button onClick={handleAppleCalendarSubmit} className="bg-[#C9FF57] hover:bg-[#b6ea4d] text-black">
+              <Button onClick={handleAppleCalendarSubmit} className="bg-brand-orange hover:bg-brand-orange text-white">
                 Connect
               </Button>
             </div>
