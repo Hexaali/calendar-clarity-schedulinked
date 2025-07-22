@@ -118,7 +118,10 @@ Use of this platform is at your own risk.`,
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Effective Date: July 17, 2025
+                <strong>
+                Effective Date: {" "}
+                </strong>
+                July 17, 2025
               </a>
               <a
                 href="#"
@@ -126,7 +129,10 @@ Use of this platform is at your own risk.`,
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Last Updated: July 17, 2025
+                <strong>
+                Last Updated: 
+                </strong>{" "}
+                July 17, 2025
               </a>
             </em>
           </p>
