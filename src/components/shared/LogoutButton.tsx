@@ -16,8 +16,7 @@ const LogoutButton = () => {
 
   return (
     <Button
-      variant="ghost"
-      className="flex items-center gap-2 text-sm bg-brand-green hover:bg-green-950 hover:text-white text-white "
+      className="flex items-center gap-2 text-sm bg-[#B81717] text-white hover:bg-[#B81717] focus:outline-none focus-visible:ring-0"
       onClick={handleLogout}
     >
       <LogOut className="h-5 w-5" />

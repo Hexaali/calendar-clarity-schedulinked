@@ -248,7 +248,7 @@ const Consent = () => {
             <div className="space-y-3 mb-6">
               <Button
                 onClick={() => setOpenGoogleModal(true)}
-                className="w-full bg-gradient-to-r from-[#C9FF57] to-[#b6ea4d] text-black hover:from-[#b6ea4d] hover:to-[#c9ff57] font-semibold py-4 rounded-lg shadow hover:shadow-md transition-all duration-200"
+                className="w-full bg-brand-orange hover:bg-brand-orange font-semibold py-4 rounded-lg shadow hover:shadow-md transition-all duration-200"
                 size="lg"
               >
                 <img src="/g.webp" className="w-4 h-4"></img>
@@ -257,7 +257,7 @@ const Consent = () => {
 
               <Button
                 onClick={() => setOpenAppleModal(true)}
-                className="w-full bg-muted text-foreground font-semibold py-4 rounded-lg shadow bg-black text-white hover:bg-gray-800 transition-all duration-200"
+                className="w-full bg-muted text-foreground font-semibold py-4 rounded-lg shadow bg-black text-white hover:bg-black transition-all duration-200"
                 size="lg"
                 variant="secondary"
               >
@@ -284,7 +284,7 @@ const Consent = () => {
                 You're about to add this artist's events to your calendar. You can revoke anytime.
               </p>
               <p className="text-xs text-muted-foreground pt-4 font-medium opacity-80">
-                Powered by Schedulinked
+                Powered by Calendure
               </p>
             </div>
           </CardContent>

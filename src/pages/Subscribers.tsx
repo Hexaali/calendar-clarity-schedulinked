@@ -60,7 +60,7 @@ const Subscribers = () => {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-brand-orange">
+                <p className="text-sm font-medium text-black">
                   Total Subscribers
                 </p>
                 <p className="text-2xl font-bold">{followers.length}</p>
@@ -74,7 +74,7 @@ const Subscribers = () => {
       {/* Subscribers Table */}
       <Card className="border-0 shadow-lg bg-white/50 backdrop-blur-sm">
         <CardHeader className="border-b border-gray-100">
-          <CardTitle className="text-xl font-semibold font-radion text-brand-orange">
+          <CardTitle className="text-xl font-semibold font-radion text-black">
             All Subscribers
           </CardTitle>
           <p className="text-muted-foreground mt-1">

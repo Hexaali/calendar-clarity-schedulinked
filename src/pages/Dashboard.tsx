@@ -121,7 +121,7 @@ const Dashboard = () => {
       headerSubtitle="Welcome back! Here's what's happening with your events."
       headerAction={
         <Link to="/dashboard/create-event">
-          <Button className="bg-brand-orange text-white hover:bg-orange-700 font-semibold shadow-md">
+          <Button className="bg-brand-green text-white hover:bg-brand-green font-semibold shadow-md">
             <Plus className="h-4 w-4 mr-2" />
             Create Event
           </Button>
@@ -139,7 +139,7 @@ const Dashboard = () => {
             >
               <CardContent className="p-6 flex flex-row items-center justify-between">
                 <div>
-                  <p className="text-xs font-medium text-brand-orange">{metric.title}</p>
+                  <p className="text-xs font-medium text-black">{metric.title}</p>
                   <p className={`text-3xl font-bold ${metric.color}`}>{metric.value}</p>
                 </div>
                 <div className="p-2 rounded-lg">

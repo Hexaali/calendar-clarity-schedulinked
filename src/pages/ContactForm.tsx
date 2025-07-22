@@ -17,7 +17,6 @@ declare global {
   }
 }
 
-const TURNSTILE_SITE_KEY = "0x4AAAAAAA9xBvthQa3E106P";
 
 interface FormData {
   name: string;
@@ -43,7 +42,7 @@ const ContactForm: React.FC = () => {
     const renderCaptcha = () => {
       if (window.turnstile && captchaRef.current) {
         window.turnstile.render(captchaRef.current, {
-          sitekey: TURNSTILE_SITE_KEY,
+          sitekey: SITE_KEY,
           callback: (token: string) => {
             setFormData((prev) => ({ ...prev, captchaToken: token }));
           },

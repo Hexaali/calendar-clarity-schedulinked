@@ -84,9 +84,15 @@ const Events = () => {
   );
 
   const totalEvents = processedEvents.length;
-  const ongoingEvents = processedEvents.filter((e) => e.status === "Ongoing").length;
-  const upcomingEvents = processedEvents.filter((e) => e.status === "Upcoming").length;
-  const passedEvents = processedEvents.filter((e) => e.status === "Passed").length;
+  const ongoingEvents = processedEvents.filter(
+    (e) => e.status === "Ongoing"
+  ).length;
+  const upcomingEvents = processedEvents.filter(
+    (e) => e.status === "Upcoming"
+  ).length;
+  const passedEvents = processedEvents.filter(
+    (e) => e.status === "Passed"
+  ).length;
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -107,7 +113,7 @@ const Events = () => {
       headerSubtitle="Manage your calendar marketing campaigns and events."
       headerAction={
         <Link to="/dashboard/create-event">
-          <Button className="bg-brand-orange text-white hover:bg-orange-600 font-semibold shadow-md">
+          <Button className="bg-brand-green hover:bg-brand-green text-white font-semibold shadow-md">
             <Plus className="h-4 w-4 mr-2" />
             Create Event
           </Button>
@@ -125,7 +131,7 @@ const Events = () => {
           <Card key={i} className="shadow-lg">
             <CardContent className="flex items-center justify-between p-6">
               <div>
-                <p className="text-sm text-brand-orange">{stat.label}</p>
+                <p className="text-sm text-black">{stat.label}</p>
                 <p className="text-2xl text-black font-bold">{stat.value}</p>
               </div>
               <Calendar className="h-8 w-8 text-brand-green" />
@@ -137,8 +143,10 @@ const Events = () => {
       {/* Events Table */}
       <Card className="shadow-lg bg-white/50 backdrop-blur-sm">
         <CardHeader className="border-b border-gray-100">
-          <CardTitle className="text-xl font-semibold">All Events</CardTitle>
-          <p className="text-muted-foreground mt-1">Search and manage your events</p>
+          <CardTitle className="text-2xl font-semibold">All Events</CardTitle>
+          <p className="text-muted-foreground mt-1">
+            Search and manage your events
+          </p>
         </CardHeader>
         <CardContent className="p-0">
           <div className="p-4">
@@ -157,11 +165,11 @@ const Events = () => {
             <p className="p-4 text-red-500">{error}</p>
           ) : (
             <Table>
-              <TableHeader>
+              <TableHeader className="hover:!bg-gray-50">
                 <TableRow>
-                  <TableHead>Event</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>Date & Time</TableHead>
+                  <TableHead className="text-black font-bold text-lg">Event</TableHead>
+                  <TableHead className="text-black font-bold text-lg">Status</TableHead>
+                  <TableHead className="text-black font-bold text-lg">Date & Time</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -172,21 +180,27 @@ const Events = () => {
                         <div
                           className={`w-2 h-8 rounded-full ${
                             event.status === "Upcoming"
-                              ? "bg-green-500"
+                              ? "bg-green-300"
                               : event.status === "Ongoing"
-                              ? "bg-yellow-500"
-                              : "bg-gray-500"
+                              ? "bg-yellow-200"
+                              : "bg-red-400"
                           }`}
                         />
                         {event.title}
                       </div>
                     </TableCell>
                     <TableCell>
-                      <Badge className={getStatusColor(event.status)}>{event.status}</Badge>
+                      <Badge className={getStatusColor(event.status)}>
+                        {event.status}
+                      </Badge>
                     </TableCell>
                     <TableCell>
-                      <p>{event.date}</p>
-                      <p className="text-sm text-muted-foreground">{event.time}</p>
+                      <div className="flex items-center gap-2">
+                        <span>{event.date}</span>
+                        <span className="text-sm text-muted-foreground">
+                          {event.time}
+                        </span>
+                      </div>
                     </TableCell>
                   </TableRow>
                 ))}

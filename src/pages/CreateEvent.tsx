@@ -338,7 +338,7 @@ const CreateEvent = () => {
             <Button
               onClick={handleCreateEvent}
               disabled={loading}
-              className="bg-brand-orange text-white font-semibold shadow-md hover:bg-orange-600"
+              className="bg-brand-green text-white font-semibold shadow-md hover:bg-orange-600"
             >
               <Send className="h-4 w-4 mr-2" />
               {loading ? "Creating..." : "Create"}
