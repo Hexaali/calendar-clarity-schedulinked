@@ -33,17 +33,15 @@ const StepBlock = ({
           >
             {id}
           </span>
-         <h3
-  className={`text-3xl font-semibold font-radion ${
-    id === 2 ? "text-brand-green" : "text-brand-orange"
-  }`}
->
-  {title}
-</h3>
+          <h3
+            className={`text-3xl font-semibold font-radion ${
+              id === 2 ? "text-brand-green" : "text-brand-orange"
+            }`}
+          >
+            {title}
+          </h3>
         </div>
-        <p className="text-brand-grey text-xl leading-relaxed">
-          {description}
-        </p>
+        <p className="text-brand-grey text-xl leading-relaxed">{description}</p>
 
         {tags.length > 0 && (
           <div className="bg-gray-50 p-6 rounded-lg">

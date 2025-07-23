@@ -30,32 +30,32 @@ const customSelectStyles = {
   control: (base: any, state: any) => ({
     ...base,
     backgroundColor: "#f9fafb",
-    borderColor: state.isFocused ? "#22c55e" : "#e5e7eb",
-    boxShadow: state.isFocused ? "0 0 0 2px rgba(34,197,94,0.4)" : "none",
+    borderColor: state.isFocused ? "#000000FF" : "#e5e7eb",
+    boxShadow: state.isFocused ? "0 0 0 2px rgba(0,0,0)" : "none",
     borderRadius: "0.5rem",
     minHeight: "2.75rem",
     fontSize: "0.875rem",
     transition: "all 0.2s ease",
     "&:hover": {
-      borderColor: "#22c55e",
+      borderColor: "#000000FF",
     },
   }),
   multiValue: (base: any) => ({
     ...base,
-    backgroundColor: "#dcfce7",
+    backgroundColor: "#000000FF",
     borderRadius: "0.375rem",
     padding: "0 0.25rem",
   }),
   multiValueLabel: (base: any) => ({
     ...base,
-    color: "#065f46",
+    color: "#FFFFFFFF",
     fontWeight: 500,
   }),
   multiValueRemove: (base: any) => ({
     ...base,
-    color: "#065f46",
+    color: "#BDBDBDFF",
     ":hover": {
-      backgroundColor: "#bbf7d0",
+      backgroundColor: "#FFFFFFFF",
       color: "#064e3b",
     },
   }),
@@ -370,7 +370,7 @@ const CreateEvent = () => {
                       onChange={(e) =>
                         handleInputChange("description", e.target.value)
                       }
-                      className="w-full min-h-[100px] rounded-md border px-3 py-2"
+                      className="w-full min-h-[100px] px-3 py-2 border rounded-xl focus:outline-none focus:ring-1 focus:ring-black focus:border-black"
                     />
                   </div>
                   {followers.length > 0 && (
