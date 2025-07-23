@@ -99,7 +99,7 @@ const Events = () => {
       case "Ongoing":
         return "bg-yellow-100 text-yellow-800 hover:bg-yellow-200";
       case "Passed":
-        return "bg-red-400 text-gray-100 hover:bg-red-200";
+        return "bg-red-300 text-gray-100 hover:bg-red-300";
       default:
         return "bg-gray-100 text-gray-600 hover:bg-gray-200";
     }
@@ -178,10 +178,10 @@ const Events = () => {
                         <div
                           className={`w-2 h-8 rounded-full ${
                             event.status === "Upcoming"
-                              ? "bg-green-300"
+                              ? "bg-green-200"
                               : event.status === "Ongoing"
                               ? "bg-yellow-200"
-                              : "bg-red-400"
+                              : "bg-red-200"
                           }`}
                         />
                         {event.title}

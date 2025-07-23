@@ -14,7 +14,7 @@ export const BrandText = (
 export const BrandLogo = (
   <img
     src="/logo.svg"
-    alt="Schedulinked Logo"
+    alt="Calendure Logo"
     className="h-20 w-[180px]"
   />
 );

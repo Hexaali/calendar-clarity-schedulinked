@@ -34,7 +34,7 @@ const DashboardLayout = ({ children, headerTitle, headerSubtitle, headerAction }
         } bg-white border-r shadow-lg transition-all duration-300 flex flex-col`}
       >
         <div className="p-6 border-b">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 mt-5">
             <Avatar className="h-10 w-10">
               <AvatarImage src="" alt={fullName} />
               <AvatarFallback className="bg-brand-green text-white font-semibold">
