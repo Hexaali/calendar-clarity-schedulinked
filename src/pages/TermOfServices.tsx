@@ -39,16 +39,19 @@ terms and policies. Subscription fees are generally non-refundable, except where
       title: "12. Contact Information",
       content: (
         <>
-          By connecting your calendar, you consent to receive event updates
-          directly to your calendar. You may revoke this consent at any time by
-          accessing your calendar provider’s settings (e.g., Google or Apple),
-          or by sending an email from the email address associated with your
-          calendar account to
-          <img
-            src="/email.png"
-            alt="Email address"
-            className="inline-block h-6 sm:h-8 md:h-10 ml-2 mb-2"
-          />
+            <p className="mt-2">
+              By connecting your calendar, you consent to receive event updates
+              directly in your calendar. You may revoke this consent at any time
+              via your calendar provider’s settings (e.g., Google or Apple), or
+              by sending an email from your calendar-associated address here:{" "}
+              <a
+                href="/contact-us"
+                className="text-brand-orange font-medium hover:underline"
+              >
+                contact us
+              </a>
+              .
+            </p>
         </>
       ),
     },
@@ -84,12 +87,16 @@ regard to its conflict of law principles.`,
       title: "12. Contact Information",
       content: (
         <>
-          If you have questions about these Terms, you may contact us at:
-          <img
-            src="/email.png"
-            alt="Email address"
-            className="inline-block h-6 sm:h-8 md:h-10 ml-2 mb-2"
-          />
+          <p className="mt-2">
+            If you have questions about these Terms, you may{" "}
+            <a
+              href="/contact-us"
+              className="text-brand-orange font-medium hover:underline"
+            >
+              contact us
+            </a>
+            .
+          </p>
         </>
       ),
     },
@@ -118,9 +125,7 @@ Use of this platform is at your own risk.`,
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <strong>
-                Effective Date: {" "}
-                </strong>
+                <strong>Effective Date: </strong>
                 July 17, 2025
               </a>
               <a
@@ -129,10 +134,7 @@ Use of this platform is at your own risk.`,
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <strong>
-                Last Updated: 
-                </strong>{" "}
-                July 17, 2025
+                <strong>Last Updated:</strong> July 17, 2025
               </a>
             </em>
           </p>

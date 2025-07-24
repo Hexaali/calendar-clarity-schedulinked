@@ -38,14 +38,14 @@ const Header = ({ variant = "full" }: HeaderProps) => {
     
       {mobileMenuOpen && (
         <div className="md:hidden border-t bg-background/95 backdrop-blur">
-          <nav className="container flex flex-col space-y-4 px-4 py-6">
+          <nav className="container flex flex-col place-items-center space-y-4 px-4 py-6">
             <a href="/#how" className="text-sm font-medium text-brand-grey  transition-colors">
               How It Works
             </a>
             <a href="/#pricing" className="text-sm font-medium text-brand-grey transition-colors">
               Pricing
             </a>
-            <Button asChild className="bg-white text-foreground hover:bg-muted font-semibold shadow-sm w-fit mb-1" variant="outline">
+            <Button asChild className="bg-brand-orange hover:bg-brand-green hover:text-white text-white rounded-lg font-semibold ">
               <Link to="/auth">Get Started</Link>
             </Button>
            

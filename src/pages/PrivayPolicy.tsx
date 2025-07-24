@@ -97,13 +97,15 @@ const PrivacyPolicy = () => {
           ))}
 
           <p className="mt-8">
-            For privacy-related questions or requests, contact us at
-            <img
-              src="/email.png"
-              alt="Email address"
-              className="inline-block h-6 sm:h-8 md:h-10 ml-2 mb-2"
-            />
-          </p>
+  For privacy-related questions or requests,{" "}
+  <a
+    href="/contact-us"
+    className="text-brand-orange font-medium hover:underline"
+  >
+    CONTACT US
+  </a>
+  .
+</p>
         </section>
       </main>
 

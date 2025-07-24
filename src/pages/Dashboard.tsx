@@ -1,12 +1,9 @@
-// src/pages/Dashboard.tsx
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Plus, Users, Calendar } from "lucide-react";
 import { toast } from "react-hot-toast";
-
 import { API_BASE_URL } from "@/components/shared/Constants";
 import DashboardLayout from "@/components/layouts/DashboardLayout";
-import { getNavigationItems } from "@/components/shared/Navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -83,7 +80,7 @@ const Dashboard = () => {
       id: event.id,
       name: event.title,
       date: eventDate.toLocaleDateString(),
-      status: status,
+      status,
     };
   });
 
@@ -121,7 +118,7 @@ const Dashboard = () => {
       headerSubtitle="Welcome back! Here's what's happening with your events."
       headerAction={
         <Link to="/dashboard/create-event">
-          <Button className="bg-brand-green text-white hover:bg-brand-green font-semibold shadow-md">
+          <Button className="bg-brand-green text-white hover:bg-brand-green font-semibold shadow-md text-sm sm:text-base">
             <Plus className="h-4 w-4 mr-2" />
             Create Event
           </Button>
@@ -132,17 +129,16 @@ const Dashboard = () => {
         {metrics.map((metric) => {
           const IconComponent = metric.icon;
           return (
-            <Card
-              key={metric.title}
-              className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-gray-50/50"
-            >
-              <CardContent className="p-6 flex flex-row items-center justify-between">
+            <Card key={metric.title} className="shadow-lg bg-gradient-to-br from-white to-gray-50/50">
+              <CardContent className="p-4 sm:p-6 flex flex-row items-center justify-between">
                 <div>
-                  <p className="text-xs font-medium text-black">{metric.title}</p>
-                  <p className={`text-3xl font-bold ${metric.color}`}>{metric.value}</p>
+                  <p className="text-xs sm:text-sm text-black">{metric.title}</p>
+                  <p className={`text-xl sm:text-2xl md:text-3xl font-bold ${metric.color}`}>
+                    {metric.value}
+                  </p>
                 </div>
                 <div className="p-2 rounded-lg">
-                  <IconComponent className="h-10 w-10 text-brand-green" />
+                  <IconComponent className="h-8 sm:h-10 w-8 sm:w-10 text-brand-green" />
                 </div>
               </CardContent>
             </Card>
@@ -150,55 +146,60 @@ const Dashboard = () => {
         })}
       </div>
 
-      <Card className="border-0 shadow-lg bg-white/50 backdrop-blur-sm">
+      <Card className="shadow-lg bg-white/50 backdrop-blur-sm">
         <CardHeader className="border-b border-gray-100">
-          <CardTitle className="text-xl font-semibold">Recent Events</CardTitle>
-          <p className="text-muted-foreground mt-1">Manage your events</p>
+          <CardTitle className="text-lg sm:text-xl md:text-2xl font-semibold">
+            Recent Events
+          </CardTitle>
+          <p className="text-muted-foreground mt-1 text-xs sm:text-sm">
+            Manage your events
+          </p>
         </CardHeader>
         <CardContent className="p-0">
           {loading ? (
-            <p className="p-4">Loading events...</p>
+            <p className="p-4 text-sm">Loading events...</p>
           ) : error ? (
-            <p className="p-4 text-red-500">{error}</p>
+            <p className="p-4 text-sm text-red-500">{error}</p>
           ) : (
-            <Table>
-              <TableHeader>
-                <TableRow className="border-gray-100">
-                  <TableHead>Event</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>Date</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {processedEvents.map((event) => (
-                  <TableRow
-                    key={event.id}
-                    className="hover:bg-gray-50/50 transition-colors border-gray-100"
-                  >
-                    <TableCell className="font-medium py-4">
-                      <div className="flex items-center gap-3">
-                        <div
-                          className={`w-2 h-8 rounded-full ${
-                            event.status === "Upcoming"
-                              ? "bg-green-200"
-                              : event.status === "Ongoing"
-                              ? "bg-yellow-200"
-                              : "bg-red-200"
-                          }`}
-                        />
-                        {event.name}
-                      </div>
-                    </TableCell>
-                    <TableCell className="py-4">
-                      <Badge className={`transition-colors ${getStatusColor(event.status)}`}>
-                        {event.status}
-                      </Badge>
-                    </TableCell>
-                    <TableCell className="py-4">{event.date}</TableCell>
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow className="border-gray-100">
+                    <TableHead className="text-sm text-black sm:text-base">Event</TableHead>
+                    <TableHead className="text-sm text-black sm:text-base">Status</TableHead>
+                    <TableHead className="text-sm text-black sm:text-base">Date</TableHead>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                </TableHeader>
+                <TableBody>
+                  {processedEvents.map((event) => (
+                    <TableRow key={event.id} className="hover:bg-gray-50/50 transition-colors">
+                      <TableCell className="py-2 sm:py-4">
+                        <div className="flex items-center gap-2 sm:gap-3">
+                          <div
+                            className={`w-2 sm:w-3 h-6 sm:h-8 rounded-full ${
+                              event.status === "Upcoming"
+                                ? "bg-green-200"
+                                : event.status === "Ongoing"
+                                ? "bg-yellow-200"
+                                : "bg-red-200"
+                            }`}
+                          />
+                          <span className="text-sm sm:text-base">{event.name}</span>
+                        </div>
+                      </TableCell>
+                      <TableCell className="py-2 sm:py-4">
+                        <Badge className={getStatusColor(event.status)}>
+                          {event.status}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="py-2 sm:py-4">
+                        <span className="text-sm sm:text-base">{event.date}</span>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
           )}
         </CardContent>
       </Card>

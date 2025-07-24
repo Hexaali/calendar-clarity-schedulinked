@@ -1,10 +1,8 @@
-
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Plus, Calendar } from "lucide-react";
 import { toast } from "react-hot-toast";
 import { API_BASE_URL } from "@/components/shared/Constants";
-import { getNavigationItems } from "@/components/shared/Navigation";
 import DashboardLayout from "@/components/layouts/DashboardLayout";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -82,15 +80,9 @@ const Events = () => {
   );
 
   const totalEvents = processedEvents.length;
-  const ongoingEvents = processedEvents.filter(
-    (e) => e.status === "Ongoing"
-  ).length;
-  const upcomingEvents = processedEvents.filter(
-    (e) => e.status === "Upcoming"
-  ).length;
-  const passedEvents = processedEvents.filter(
-    (e) => e.status === "Passed"
-  ).length;
+  const ongoingEvents = processedEvents.filter((e) => e.status === "Ongoing").length;
+  const upcomingEvents = processedEvents.filter((e) => e.status === "Upcoming").length;
+  const passedEvents = processedEvents.filter((e) => e.status === "Passed").length;
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -111,14 +103,13 @@ const Events = () => {
       headerSubtitle="Manage your calendar marketing campaigns and events."
       headerAction={
         <Link to="/dashboard/create-event">
-          <Button className="bg-brand-green hover:bg-brand-green text-white font-semibold shadow-md">
+          <Button className="bg-brand-green hover:bg-brand-green text-white font-semibold shadow-md text-sm sm:text-base">
             <Plus className="h-4 w-4 mr-2" />
             Create Event
           </Button>
         </Link>
       }
     >
-   
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
         {[
           { label: "Total Events", value: totalEvents },
@@ -127,22 +118,21 @@ const Events = () => {
           { label: "Passed", value: passedEvents },
         ].map((stat, i) => (
           <Card key={i} className="shadow-lg">
-            <CardContent className="flex items-center justify-between p-6">
+            <CardContent className="p-4 sm:p-6 flex items-center justify-between">
               <div>
-                <p className="text-sm text-black">{stat.label}</p>
-                <p className="text-2xl text-black font-bold">{stat.value}</p>
+                <p className="text-sm sm:text-base text-black">{stat.label}</p>
+                <p className="text-xl sm:text-2xl text-black font-bold">{stat.value}</p>
               </div>
-              <Calendar className="h-8 w-8 text-brand-green" />
+              <Calendar className="h-6 sm:h-8 w-6 sm:w-8 text-brand-green" />
             </CardContent>
           </Card>
         ))}
       </div>
 
-     
       <Card className="shadow-lg bg-white/50 backdrop-blur-sm">
         <CardHeader className="border-b border-gray-100">
-          <CardTitle className="text-2xl font-semibold">All Events</CardTitle>
-          <p className="text-muted-foreground mt-1">
+          <CardTitle className="text-lg sm:text-xl font-semibold">All Events</CardTitle>
+          <p className="text-muted-foreground mt-1 text-xs sm:text-sm">
             Search and manage your events
           </p>
         </CardHeader>
@@ -151,59 +141,60 @@ const Events = () => {
             <input
               type="text"
               placeholder="Search events"
-              className="w-full md:w-1/3 border border-gray-200 rounded px-3 py-2 text-sm"
+              className="w-full max-w-md border border-gray-200 rounded px-3 py-2 text-sm sm:text-base"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-
           {loading ? (
-            <p className="p-4">Loading events...</p>
+            <p className="p-4 text-sm">Loading events...</p>
           ) : error ? (
-            <p className="p-4 text-red-500">{error}</p>
+            <p className="p-4 text-sm text-red-500">{error}</p>
           ) : (
-            <Table>
-              <TableHeader className="hover:!bg-gray-50">
-                <TableRow>
-                  <TableHead className="text-black font-bold text-lg">Event</TableHead>
-                  <TableHead className="text-black font-bold text-lg">Status</TableHead>
-                  <TableHead className="text-black font-bold text-lg">Date & Time</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {filteredEvents.map((event) => (
-                  <TableRow key={event.id} className="hover:bg-gray-50/50">
-                    <TableCell>
-                      <div className="flex items-center gap-3">
-                        <div
-                          className={`w-2 h-8 rounded-full ${
-                            event.status === "Upcoming"
-                              ? "bg-green-200"
-                              : event.status === "Ongoing"
-                              ? "bg-yellow-200"
-                              : "bg-red-200"
-                          }`}
-                        />
-                        {event.title}
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <Badge className={getStatusColor(event.status)}>
-                        {event.status}
-                      </Badge>
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-2">
-                        <span>{event.date}</span>
-                        <span className="text-sm text-muted-foreground">
-                          {event.time}
-                        </span>
-                      </div>
-                    </TableCell>
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="text-black sm:text-base font-bold">Event</TableHead>
+                    <TableHead className="text-black sm:text-base font-bold">Status</TableHead>
+                    <TableHead className="text-black sm:text-base font-bold">
+                      Date & Time
+                    </TableHead>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                </TableHeader>
+                <TableBody>
+                  {filteredEvents.map((event) => (
+                    <TableRow key={event.id} className="hover:bg-gray-50/50">
+                      <TableCell className="py-2 sm:py-4">
+                        <div className="flex items-center gap-2 sm:gap-3">
+                          <div
+                            className={`w-2 sm:w-3 h-6 sm:h-8 rounded-full ${
+                              event.status === "Upcoming"
+                                ? "bg-green-200"
+                                : event.status === "Ongoing"
+                                ? "bg-yellow-200"
+                                : "bg-red-200"
+                            }`}
+                          />
+                          <span className="text-sm sm:text-base">{event.title}</span>
+                        </div>
+                      </TableCell>
+                      <TableCell className="py-2 sm:py-4">
+                        <Badge className={getStatusColor(event.status)}>{event.status}</Badge>
+                      </TableCell>
+                      <TableCell className="py-2 sm:py-4">
+                        <div className="flex flex-col sm:flex-row sm:gap-2">
+                          <span className="text-sm sm:text-base">{event.date}</span>
+                          <span className="text-xs sm:text-sm text-muted-foreground">
+                            {event.time}
+                          </span>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
           )}
         </CardContent>
       </Card>
