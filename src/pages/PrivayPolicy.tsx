@@ -102,7 +102,7 @@ const PrivacyPolicy = () => {
     href="/contact-us"
     className="text-brand-orange font-medium hover:underline"
   >
-    CONTACT US
+    contact us
   </a>
   .
 </p>
