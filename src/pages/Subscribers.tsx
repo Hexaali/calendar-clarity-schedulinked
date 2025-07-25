@@ -85,7 +85,7 @@ const Subscribers = () => {
             <TableHeader>
               <TableRow className="border-gray-100">
                 <TableHead>Subscriber</TableHead>
-                <TableHead>Username</TableHead>
+                <TableHead>Email</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
