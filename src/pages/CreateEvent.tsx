@@ -7,8 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Home, Calendar, Users, ArrowLeft, Send, Info } from "lucide-react";
+import { ArrowLeft, Send, Info } from "lucide-react";
 import { API_BASE_URL } from "@/components/shared/Constants";
 import {
   Tooltip,
@@ -18,6 +17,7 @@ import {
 } from "@/components/ui/tooltip";
 
 const animatedComponents = makeAnimated();
+
 const customSelectStyles = {
   control: (base: any, state: any) => ({
     ...base,
@@ -51,6 +51,27 @@ const customSelectStyles = {
 
 const getTodayDate = (): string => new Date().toISOString().split("T")[0];
 
+const formatDate = (dateStr: string) => {
+  if (!dateStr) return "Not set";
+  const options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  };
+  return new Date(dateStr).toLocaleDateString("en-US", options);
+};
+
+const formatTime = (timeStr: string) => {
+  if (!timeStr) return "";
+  const [hour, minute] = timeStr.split(":");
+  const date = new Date();
+  date.setHours(Number(hour), Number(minute));
+  return date.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+  });
+};
+
 interface EventData {
   title: string;
   description: string;
@@ -60,6 +81,7 @@ interface EventData {
   endTime: string;
   location: string;
   timezone: string;
+  Url: string;
 }
 
 interface FollowerOption {
@@ -80,6 +102,7 @@ const CreateEvent = () => {
     startTime: "",
     endTime: "",
     location: "",
+    Url: "",
     timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
   });
 
@@ -87,19 +110,8 @@ const CreateEvent = () => {
   const [selectedFollowers, setSelectedFollowers] = useState<FollowerOption[]>(
     []
   );
-  const userData = JSON.parse(localStorage.getItem("user") || "{}");
-  const fullName = userData?.full_name || "Unknown User";
-  const username = userData?.username || "unknown@example.com";
 
-  const getInitials = (name: string): string =>
-    name
-      ? name
-          .split(" ")
-          .map((n) => n[0])
-          .join("")
-          .toUpperCase()
-      : "U";
-  const initials = getInitials(fullName);
+  const userData = JSON.parse(localStorage.getItem("user") || "{}");
 
   useEffect(() => {
     if (userData?.followers?.length) {
@@ -171,7 +183,7 @@ const CreateEvent = () => {
       time: startDateTime.toISOString(),
       end_time: endDateTime?.toISOString() || null,
       location: eventData.location || "Online",
-      external_url: "",
+      external_url: eventData.Url || "",
       category: "EVENT",
       duration: "",
       business: userData?.id || 1,
@@ -202,9 +214,6 @@ const CreateEvent = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-gray-50/30 flex flex-col">
-      <aside className={`${sidebarOpen ? "w-72" : "w-20"} bg-white ...`}>
-        {/* Sidebar unchanged */}
-      </aside>
       <main className="flex-1 overflow-y-auto">
         <header className="bg-white/80 px-4 sm:px-8 py-4 sm:py-6 sticky top-0 z-10 border-b border-gray-200/50">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -231,6 +240,7 @@ const CreateEvent = () => {
             </Button>
           </div>
         </header>
+
         <div className="p-4 sm:p-8 max-w-4xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
             <div className="lg:col-span-2 space-y-6">
@@ -249,6 +259,7 @@ const CreateEvent = () => {
                       }
                     />
                   </div>
+
                   <div>
                     <Label>Description</Label>
                     <textarea
@@ -259,6 +270,7 @@ const CreateEvent = () => {
                       }
                     />
                   </div>
+
                   {followers.length > 0 && (
                     <div>
                       <Label>Tag Followers</Label>
@@ -273,10 +285,19 @@ const CreateEvent = () => {
                         placeholder="Select followers..."
                         styles={customSelectStyles}
                         className="mt-2"
-                        classNamePrefix="react-select"
                       />
                     </div>
                   )}
+
+                  <div>
+                    <Label>URL</Label>
+                    <Input
+                      className="w-full"
+                      value={eventData.Url}
+                      onChange={(e) => handleInputChange("Url", e.target.value)}
+                    />
+                  </div>
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <Label>Event Date *</Label>
@@ -300,40 +321,46 @@ const CreateEvent = () => {
                       />
                     </div>
                   </div>
+
                   <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                          <div>
-                            <Label>End Date</Label>
-                            <Input
-                              className="w-full"
-                              type="date"
-                              min={eventData.startDate || getTodayDate()}
-                              value={eventData.endDate}
-                              onChange={handleEndDateChange}
-                            />
-                          </div>
-                          <div>
-                            <Label>End Time</Label>
-                            <Input
-                              className="w-full"
-                              type="time"
-                              value={eventData.endTime}
-                              onChange={handleEndTimeChange}
-                            />
-                          </div>
+                    <div className="flex flex-col">
+                      <div className="flex justify-end">
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Info className="h-5 w-5 text-red-600 cursor-pointer" />
+                          </TooltipTrigger>
+                          <TooltipContent className="text-sm max-w-xs">
+                            If end date or end time is not set, the event will
+                            be marked as an all-day event.
+                          </TooltipContent>
+                        </Tooltip>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <Label htmlFor="end-date">End Date</Label>
+                          <Input
+                            id="end-date"
+                            type="date"
+                            className="w-full"
+                            min={eventData.startDate || getTodayDate()}
+                            value={eventData.endDate}
+                            onChange={handleEndDateChange}
+                          />
                         </div>
-                      </TooltipTrigger>
-                      <TooltipContent
-                        side="top"
-                        align="center"
-                        className="max-w-sm text-sm text-black"
-                      >
-                        End date/time are optional.
-                      </TooltipContent>
-                    </Tooltip>
+                        <div>
+                          <Label htmlFor="end-time">End Time</Label>
+                          <Input
+                            id="end-time"
+                            type="time"
+                            className="w-full"
+                            value={eventData.endTime}
+                            onChange={handleEndTimeChange}
+                          />
+                        </div>
+                      </div>
+                    </div>
                   </TooltipProvider>
+
                   <div>
                     <Label>Location</Label>
                     <Input
@@ -347,9 +374,10 @@ const CreateEvent = () => {
                 </CardContent>
               </Card>
             </div>
+
             <div>
-              <Card className="border-0 shadow-lg">
-                <CardHeader>
+              <Card className="border-0 shadow-lg w-max">
+                <CardHeader className="flex items-center">
                   <CardTitle>Preview</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -357,25 +385,23 @@ const CreateEvent = () => {
                     <h3 className="font-semibold">
                       {eventData.title || "Event Name"}
                     </h3>
-                    <p>
+                    <p className="text-[14px]">
                       {eventData.description || "Event description here..."}
                     </p>
-                    <p>
-                      <strong>Start:</strong> {eventData.startDate || "Not set"}{" "}
-                      {eventData.startTime || ""}
+                    <p className="text-[14px]">
+                      <strong>Start:</strong> {formatDate(eventData.startDate)}{" "}
+                      {formatTime(eventData.startTime)}
                     </p>
-                    <p>
+                    <p className="text-[14px]">
                       <strong>End:</strong>{" "}
-                      {eventData.endDate || eventData.startDate || "Not set"}{" "}
-                      {eventData.endTime || ""}
+                      {formatDate(eventData.endDate || eventData.startDate)}{" "}
+                      {formatTime(eventData.endTime)}
                     </p>
-                    <p>{eventData.location || "Location not set"}</p>
-                    <p className="text-sm text-gray-500 mt-2">
-                      {!eventData.endDate && !eventData.endTime
-                        ? "This will be an all‑day event"
-                        : !eventData.endTime
-                        ? "This will be an all‑day event"
-                        : "This is a timed event"}
+                    <p className="text-[14px]">
+                      {eventData.location || "Location not set"}
+                    </p>
+                    <p className="text-[14px]">
+                      {eventData.Url || "URL not set"}
                     </p>
                   </div>
                 </CardContent>
