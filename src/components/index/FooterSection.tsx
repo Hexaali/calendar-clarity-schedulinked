@@ -36,13 +36,10 @@ const FooterSection = () => {
               </div> */}
             </div>
             <p className="text-brand-grey text-sm leading-relaxed">
-              Marketing people actually want. Put your content straight into
-              calendars with reminders, media, and automation.
+              Connection with the audience that matters.
             </p>
             <p className="text-brand-grey text-sm">
-              We're not trying to fix email. We're skipping it entirely. At
-              Calendure, we believe your calendar isn't just for meetings — it's
-              where attention lives.
+              Calendure puts you straight into your audience's calendar — with reminders — no noise, just visibility that works.
             </p>
           </div>
 

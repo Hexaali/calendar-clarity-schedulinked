@@ -104,7 +104,7 @@ const Dashboard = () => {
       case "Upcoming":
         return "bg-green-200 text-green-600 hover:bg-green-300";
       case "Ongoing":
-        return "bg-yellow-300 text-yellow-800 hover:bg-yellow-300";
+        return "bg-yellow-200 text-yellow-600 hover:bg-yellow-200";
       case "Passed":
         return "bg-red-300 text-gray-100 hover:bg-red-300";
       default:

@@ -8,6 +8,7 @@ type StepProps = {
   bulletPoints?: string[];
   socialProof?: { name: string; stat: string }[];
   imageSide: "left" | "right";
+  imageUrl?: string;
 };
 
 const StepBlock = ({
@@ -18,12 +19,13 @@ const StepBlock = ({
   bulletPoints = [],
   socialProof = [],
   imageSide,
+  imageUrl,
 }: StepProps) => {
   const isImageLeft = imageSide === "left";
 
   return (
     <div className={`grid md:grid-cols-2 gap-16 items-center`}>
-      {isImageLeft && <ImagePlaceholder />}
+      {isImageLeft && <StepImage src={imageUrl} />}
       <div className={`space-y-6 ${isImageLeft ? "order-2 md:order-1" : ""}`}>
         <div className="flex items-center gap-4 mb-4">
           <span
@@ -93,43 +95,53 @@ const StepBlock = ({
           </div>
         )}
       </div>
-      {!isImageLeft && <ImagePlaceholder />}
+      {!isImageLeft && <StepImage src={imageUrl} />}
     </div>
   );
 };
 
-const ImagePlaceholder = () => (
-  <div className="h-80 bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl shadow-lg" />
+const StepImage = ({ src }: { src?: string }) => (
+  <div className="h-80 w-full rounded-3xl overflow-hidden shadow-lg">
+    {src ? (
+      <img
+        src={src}
+        alt="Step visual"
+        className="w-full h-full object-contain"
+      />
+    ) : (
+      <div className="h-full w-full bg-gradient-to-br from-gray-100 to-gray-200" />
+    )}
+  </div>
 );
 
-const steps = [
+const steps: StepProps[] = [
   {
     id: 1,
     title: "One-Click Permission",
     description:
-      "Your audience subscribes to your calendar with one tap — no logins, no forms, no friction. They want to hear from you, so they give you permission to reach them where they actually look every day.",
-    bulletPoints: [],
-    tags: ["🎧 Music releases", "✂️ Appointment reminders", "🛍️ Flash sales"],
-    imageSide: "right" as const,
+      "Your audience lets you into their calendar with one step — with minimal friction. They want to hear from you, so they give you permission to reach them where they actually look every day.",
+    tags: ["🎭 Artists", "🏋️ Athletes", "📣 Announcements"],
+    imageSide: "right",
+    imageUrl: "/profileCard.png",
   },
   {
     id: 2,
-    title: "Create & Schedule",
+    title: "Inform & Announce",
     description:
-      "Add your content — drops, deadlines, events, or promotions — with media, links, and smart reminders. Everything syncs automatically across Google, Apple, and Outlook calendars.",
+      "What you are upto, when is it happening, and how can your audience be part of it — create calendar events with clear agenda — with location, link, and smart reminders. Everything syncs automatically across Google, Apple, and Outlook calendars.",
     bulletPoints: [
       "Rich media support (images, videos, links)",
       "Cross-platform sync (Google, Apple, Outlook)",
       "Automated reminder sequences",
     ],
-    imageSide: "left" as const,
+    imageSide: "left",
+    imageUrl: "/createEvent.png", 
   },
   {
     id: 3,
-    title: "Track & Convert",
+    title: "We Calendure",
     description:
-      "Events appear in their calendars with built-in visibility and engagement tracking. See what works, optimize what doesn't, and watch your conversion rates soar.",
-    bulletPoints: [],
+      "Events appear in your audience's calendars with built-in visibility and reminders — your audience does not have to install any app and events are part of their native Google and Apple calendars",
     socialProof: [
       {
         name: "DJ Mixmaster",
@@ -144,7 +156,8 @@ const steps = [
         stat: "5x more traffic than social posts",
       },
     ],
-    imageSide: "right" as const,
+    imageSide: "right",
+    imageUrl: "/images/step3.jpg", 
   },
 ];
 
