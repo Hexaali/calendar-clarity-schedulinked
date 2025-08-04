@@ -24,9 +24,9 @@ const StepBlock = ({
   const isImageLeft = imageSide === "left";
 
   return (
-    <div className={`grid md:grid-cols-2 gap-16 items-center`}>
-      {isImageLeft && <StepImage src={imageUrl} />}
-      <div className={`space-y-6 ${isImageLeft ? "order-2 md:order-1" : ""}`}>
+    <div className="grid md:grid-cols-2 gap-16 items-center">
+      {/* Content section always first on mobile */}
+      <div className={`space-y-6 ${isImageLeft ? "md:order-2" : "md:order-1"}`}>
         <div className="flex items-center gap-4 mb-4">
           <span
             className={`text-white font-bold text-lg rounded-full w-10 h-10 flex items-center justify-center ${
@@ -82,7 +82,7 @@ const StepBlock = ({
             <div className="space-y-3">
               {socialProof.map((proof, i) => (
                 <div key={i} className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-gradient-to-br from-gray-300 to-gray-400 rounded-full"></div>
+                  <div className="w-8 h-8 bg-gradient-to-br from-gray-300 to-gray-400 rounded-full" />
                   <div>
                     <p className="text-sm font-medium">{proof.name}</p>
                     <p className="text-xs text-muted-foreground">
@@ -95,23 +95,27 @@ const StepBlock = ({
           </div>
         )}
       </div>
-      {!isImageLeft && <StepImage src={imageUrl} />}
+
+      {/* Image section (ordered after content on mobile, but rearranged on md+) */}
+      <div className={`${isImageLeft ? "md:order-1" : "md:order-2"}`}>
+        <StepImage src={imageUrl} />
+      </div>
     </div>
   );
 };
 
 const StepImage = ({ src }: { src?: string }) => (
-  <div className="h-80 w-full rounded-3xl overflow-hidden shadow-lg">
+  <>
     {src ? (
       <img
         src={src}
-        alt="Step visual"
-        className="w-full h-full object-contain"
+        alt="Calendure"
+        className="w-full h-96 object-contain"
       />
     ) : (
       <div className="h-full w-full bg-gradient-to-br from-gray-100 to-gray-200" />
     )}
-  </div>
+  </>
 );
 
 const steps: StepProps[] = [
@@ -120,7 +124,7 @@ const steps: StepProps[] = [
     title: "One-Click Permission",
     description:
       "Your audience lets you into their calendar with one step — with minimal friction. They want to hear from you, so they give you permission to reach them where they actually look every day.",
-    tags: ["🎭 Artists", "🏋️ Athletes", "📣 Announcements"],
+    tags: ["🎭 Artists", "🏋️ Athletes", "🎓 Academic Schedules"],
     imageSide: "right",
     imageUrl: "/profileCard.png",
   },
@@ -135,7 +139,7 @@ const steps: StepProps[] = [
       "Automated reminder sequences",
     ],
     imageSide: "left",
-    imageUrl: "/createEvent.png", 
+    imageUrl: "/createEvent.png",
   },
   {
     id: 3,
@@ -157,7 +161,7 @@ const steps: StepProps[] = [
       },
     ],
     imageSide: "right",
-    imageUrl: "/images/step3.jpg", 
+    imageUrl: "/images/step3.jpg",
   },
 ];
 

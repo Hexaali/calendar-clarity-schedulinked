@@ -376,16 +376,16 @@ const CreateEvent = () => {
             </div>
 
             <div>
-              <Card className="border-0 shadow-lg w-max">
+              <Card className="border-0 shadow-lg w-full max-w-md">
                 <CardHeader className="flex items-center">
                   <CardTitle>Preview</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="p-4 bg-gray-50 rounded-lg space-y-2">
-                    <h3 className="font-semibold">
+                  <div className="p-2 bg-gray-50 rounded-lg space-y-2 break-words">
+                    <h3 className="font-semibold break-words">
                       {eventData.title || "Event Name"}
                     </h3>
-                    <p className="text-[14px]">
+                    <p className="text-[14px] break-words">
                       {eventData.description || "Event description here..."}
                     </p>
                     <p className="text-[14px]">
@@ -397,10 +397,10 @@ const CreateEvent = () => {
                       {formatDate(eventData.endDate || eventData.startDate)}{" "}
                       {formatTime(eventData.endTime)}
                     </p>
-                    <p className="text-[14px]">
+                    <p className="text-[14px] break-words">
                       {eventData.location || "Location not set"}
                     </p>
-                    <p className="text-[14px]">
+                    <p className="text-[14px] break-words">
                       {eventData.Url || "URL not set"}
                     </p>
                   </div>

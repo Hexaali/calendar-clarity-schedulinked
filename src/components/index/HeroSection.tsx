@@ -6,7 +6,7 @@ const HeroSection = () => (
   <section className="py-24 md:py-32 px-4 md:px-6 bg-gradient-to-br from-gray-50 to-white">
     <div className="container max-w-5xl mx-auto text-center">
       <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-brand-green mb-8 leading-tight tracking-tight">
-        Connection with the audience that matters.
+        Connection with the<span className="lg:text-8xl xl:text-8xl text-brand-orange font-bold uppercase"> audience </span>that matters.
       </h1>
       <p className="text-xl md:text-2xl text-brand-grey mb-12 max-w-4xl mx-auto leading-relaxed">
         Calendure puts your content straight into calendars — with reminders — no noise, just visibility that works.
@@ -23,4 +23,4 @@ const HeroSection = () => (
   </section>
 );
 
-export default HeroSection;
+export default HeroSection; 
