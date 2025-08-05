@@ -25,7 +25,6 @@ const StepBlock = ({
 
   return (
     <div className="grid md:grid-cols-2 gap-16 items-center">
-      {/* Content section always first on mobile */}
       <div className={`space-y-6 ${isImageLeft ? "md:order-2" : "md:order-1"}`}>
         <div className="flex items-center gap-4 mb-4">
           <span
@@ -67,8 +66,21 @@ const StepBlock = ({
           <div className="space-y-3">
             {bulletPoints.map((point, i) => (
               <div key={i} className="flex items-center gap-3">
-                <CheckCircle className="h-5 w-5 text-brand-green" />
-                <span className="text-gray-700">{point}</span>
+                <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-green-600 flex-shrink-0" />
+
+                <span className="text-gray-700">
+                  {point.includes("Outlook") ? (
+                    <>
+                      Cross-platform sync (Google, Apple, Outlook{" "}
+                      <span className="italic ml-1 px-2 py-0.5 text-xs font-bold text-white bg-gradient-to-r from-orange-500 to-pink-500 rounded-full shadow-md animate-pulse">
+                        Upcoming
+                      </span>
+                      )
+                    </>
+                  ) : (
+                    point
+                  )}
+                </span>
               </div>
             ))}
           </div>
@@ -96,7 +108,6 @@ const StepBlock = ({
         )}
       </div>
 
-      {/* Image section (ordered after content on mobile, but rearranged on md+) */}
       <div className={`${isImageLeft ? "md:order-1" : "md:order-2"}`}>
         <StepImage src={imageUrl} />
       </div>
@@ -107,11 +118,7 @@ const StepBlock = ({
 const StepImage = ({ src }: { src?: string }) => (
   <>
     {src ? (
-      <img
-        src={src}
-        alt="Calendure"
-        className="w-full h-96 object-contain"
-      />
+      <img src={src} alt="Calendure" className="w-full h-96 object-contain" />
     ) : (
       <div className="h-full w-full bg-gradient-to-br from-gray-100 to-gray-200" />
     )}
@@ -146,20 +153,7 @@ const steps: StepProps[] = [
     title: "We Calendure",
     description:
       "Events appear in your audience's calendars with built-in visibility and reminders — your audience does not have to install any app and events are part of their native Google and Apple calendars",
-    socialProof: [
-      {
-        name: "DJ Mixmaster",
-        stat: "+42% album release engagement",
-      },
-      {
-        name: "Premium Styles Salon",
-        stat: "No-shows dropped from 28% to 7%",
-      },
-      {
-        name: "Urban Boutique",
-        stat: "5x more traffic than social posts",
-      },
-    ],
+
     imageSide: "right",
     imageUrl: "/images/step3.jpg",
   },

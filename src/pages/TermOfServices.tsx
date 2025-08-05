@@ -1,7 +1,12 @@
 import Header from "@/components/shared/Header";
 import FooterSection from "@/components/index/FooterSection";
+import { useEffect } from "react";
 
 const TermsOfService = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, []);
+
   const sections = [
     {
       title: "1. Description of Service",
@@ -39,19 +44,19 @@ terms and policies. Subscription fees are generally non-refundable, except where
       title: "12. Contact Information",
       content: (
         <>
-            <p className="mt-2">
-              By connecting your calendar, you consent to receive event updates
-              directly in your calendar. You may revoke this consent at any time
-              via your calendar provider’s settings (e.g., Google or Apple), or
-              by sending an email from your calendar-associated address here:{" "}
-              <a
-                href="/contact-us"
-                className="text-brand-orange font-medium hover:underline"
-              >
-                contact us
-              </a>
-              .
-            </p>
+          <p className="mt-2">
+            By connecting your calendar, you consent to receive event updates
+            directly in your calendar. You may revoke this consent at any time
+            via your calendar provider’s settings (e.g., Google or Apple), or by
+            sending an email from your calendar-associated address here:{" "}
+            <a
+              href="/contact-us"
+              className="text-brand-orange font-medium hover:underline"
+            >
+              contact us
+            </a>
+            .
+          </p>
         </>
       ),
     },

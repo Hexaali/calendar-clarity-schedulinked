@@ -4,20 +4,24 @@ import { Button } from "@/components/ui/button";
 
 interface PricingCardProps {
   title: string;
-  price: string;
+  priceSub?: string;
+  priceMain: string;
   features: string[];
   popular?: boolean;
   actionText: string;
   variant?: "outline" | "solid";
+  onActionClick?: () => void;
 }
 
 export const PricingCard = ({
   title,
-  price,
+  priceSub,
+  priceMain,
   features,
   popular = false,
   actionText,
   variant = "outline",
+  onActionClick,
 }: PricingCardProps) => {
   return (
     <Card
@@ -29,7 +33,7 @@ export const PricingCard = ({
     >
       {popular && (
         <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-          <span className="bg-brand-orange  text-white px-4 py-2 rounded-full text-sm font-semibold">
+          <span className="bg-brand-orange text-white px-4 py-2 rounded-full text-sm font-semibold">
             Most Popular
           </span>
         </div>
@@ -38,7 +42,10 @@ export const PricingCard = ({
       <CardContent className="p-0 space-y-8">
         <div>
           <h3 className="text-2xl font-semibold mb-3 font-radion">{title}</h3>
-          <div className="text-4xl font-bold mb-8">{price}</div>
+          <div className="text-4xl font-bold mb-8">
+  {priceMain}
+  <span className="text-base font-medium text-gray-500 ml-1">{priceSub}</span>
+</div>
         </div>
 
         <ul className="space-y-4 text-brand-grey mb-8">
@@ -51,6 +58,7 @@ export const PricingCard = ({
         </ul>
 
         <Button
+          onClick={onActionClick}
           variant={variant === "solid" ? "default" : "outline"}
           className={`w-full py-3 font-semibold ${
             variant === "solid"

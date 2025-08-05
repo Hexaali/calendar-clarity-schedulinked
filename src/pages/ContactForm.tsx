@@ -17,7 +17,6 @@ declare global {
   }
 }
 
-
 interface FormData {
   name: string;
   email: string;
@@ -37,6 +36,10 @@ const ContactForm: React.FC = () => {
 
   const [loading, setLoading] = useState<boolean>(false);
   const captchaRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, []);
 
   useEffect(() => {
     const renderCaptcha = () => {

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate, useLocation } from "react-router-dom"; 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -21,7 +21,14 @@ export default function Auth() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate(); // <-- Added
-
+const location = useLocation();
+useEffect(() => {
+  const params = new URLSearchParams(location.search);
+  const urlMode = params.get("mode");
+  if (urlMode === "register") {
+    setMode("register");
+  }
+}, [location.search]);
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const usernameRef = useRef(null);

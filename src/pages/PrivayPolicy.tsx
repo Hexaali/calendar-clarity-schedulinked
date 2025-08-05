@@ -1,7 +1,11 @@
 import Header from "@/components/shared/Header";
 import FooterSection from "@/components/index/FooterSection";
+import { useEffect } from "react";
 
 const PrivacyPolicy = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, []);
   const sections = [
     {
       title: "1. Information We Collect",
@@ -81,31 +85,35 @@ const PrivacyPolicy = () => {
 
         <section className="space-y-6">
           <div>
-            <h2 className="text-xl font-semibold mb-2 text-brand-green">Your Privacy Matters</h2>
+            <h2 className="text-xl font-semibold mb-2 text-brand-green">
+              Your Privacy Matters
+            </h2>
             <p>
-              We value your privacy. This Privacy Policy explains how we collect,
-              use, store, and protect your information when you use our app. By
-              using our services, you agree to this policy.
+              We value your privacy. This Privacy Policy explains how we
+              collect, use, store, and protect your information when you use our
+              app. By using our services, you agree to this policy.
             </p>
           </div>
 
           {sections.map(({ title, content }) => (
             <div key={title}>
-              <h3 className="text-lg font-semibold text-brand-orange mb-2">{title}</h3>
+              <h3 className="text-lg font-semibold text-brand-orange mb-2">
+                {title}
+              </h3>
               {typeof content === "string" ? <p>{content}</p> : content}
             </div>
           ))}
 
           <p className="mt-8">
-  For privacy-related questions or requests,{" "}
-  <a
-    href="/contact-us"
-    className="text-brand-orange font-medium hover:underline"
-  >
-    contact us
-  </a>
-  .
-</p>
+            For privacy-related questions or requests,{" "}
+            <a
+              href="/contact-us"
+              className="text-brand-orange font-medium hover:underline"
+            >
+              contact us
+            </a>
+            .
+          </p>
         </section>
       </main>
 
