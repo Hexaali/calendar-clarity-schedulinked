@@ -1,7 +1,14 @@
+import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+
 import PrivateRoute from "./components/shared/PrivateRoute";
 import ContactForm from "./pages/ContactForm";
 import Index from "./pages/Index";
@@ -16,6 +23,66 @@ import PrivacyPolicy from "./pages/PrivayPolicy";
 import TermsOfServices from "./pages/TermOfServices";
 
 const queryClient = new QueryClient();
+const Analytics = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (typeof window.gtag === "function") {
+      window.gtag("config", "G-3V9JKYLHDM", {
+        page_path: location.pathname,
+      });
+    }
+  }, [location]);
+
+  return null;
+};
+
+const AppRoutes = () => (
+  <>
+    <Analytics />
+    <Routes>
+      <Route path="/" element={<Index />} />
+      <Route path="/auth" element={<Auth />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/contact-us" element={<ContactForm />} />
+      <Route path="/terms-of-services" element={<TermsOfServices />} />
+      <Route
+        path="/dashboard"
+        element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/dashboard/events"
+        element={
+          <PrivateRoute>
+            <Events />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/dashboard/subscribers"
+        element={
+          <PrivateRoute>
+            <Subscribers />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/dashboard/create-event"
+        element={
+          <PrivateRoute>
+            <CreateEvent />
+          </PrivateRoute>
+        }
+      />
+      <Route path="/:username" element={<Consent />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  </>
+);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -30,47 +97,7 @@ const App = () => (
         }}
       />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} /> 
-          <Route path="/contact-us" element={<ContactForm />} />
-          <Route path="/terms-of-services" element={<TermsOfServices />} />
-          <Route
-            path="/dashboard"
-            element={
-              <PrivateRoute>
-                <Dashboard />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/dashboard/events"
-            element={
-              <PrivateRoute>
-                <Events />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/dashboard/subscribers"
-            element={
-              <PrivateRoute>
-                <Subscribers />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/dashboard/create-event"
-            element={
-              <PrivateRoute>
-                <CreateEvent />
-              </PrivateRoute>
-            }
-          />
-          <Route path="/:username" element={<Consent />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AppRoutes />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

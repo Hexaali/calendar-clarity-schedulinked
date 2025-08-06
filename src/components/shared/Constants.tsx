@@ -4,7 +4,7 @@ export const GOOGLE_CLIENT_ID = '843294487741-140tfcgtu5knpb97pnc2fenbcdoji9nh.a
 export const GOOGLE_REDIRECT_URI = 'https://calendure.com'
 export const GOOGLE_SCOPES = 'https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/userinfo.email'
 export const SITE_KEY = '0x4AAAAAABlXI8chOAIicWnQ'
-
+export const GA_MEASUREMENT_ID = 'G-3V9JKYLHDM'
 export const BrandText = (
   <div className="text-2xl font-bold text-brand-green tracking-tight">
     Calendure
